@@ -2,8 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/welcome' },
-  { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule) }
+  { path: '', pathMatch: 'full', redirectTo: '/engine-parts' },
+  { path: 'engine-parts', loadChildren:
+      () => import('./pages/engine-parts-list/engine-parts-list.module').then(m => m.EnginePartsListModule) },
+  { path: 'phones', loadChildren:
+      () => import('./pages/phones-list/phones-list.module').then(m => m.PhonesListModule) }
 ];
 
 @NgModule({
