@@ -1,4 +1,4 @@
-export type PhoneListModel = {
+export type PhoneListItem = {
   id: number,
   name: string,
   brand: string,

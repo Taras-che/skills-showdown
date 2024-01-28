@@ -16,7 +16,6 @@ export class FilterTableComponent<T extends SearchFilterColumnModel> {
   @Input() tableColumns: FilterTableModel[] = [];
   public listOfDisplayData: any[] = [];
 
-
   constructor(public fb: FormBuilder) {
     this.searchForm = this.fb.group({
       searchValue: ['']
@@ -27,6 +26,7 @@ export class FilterTableComponent<T extends SearchFilterColumnModel> {
   }
 
   onSearch(): void {
+    //don't happy with this it's not fully dynamic table. Problem when want to search in multiple columns.
     const searchValue = this.searchForm.get('searchValue')?.value.toLowerCase();
     this.listOfDisplayData = this.tableData.filter((item: T) => item.name.toLowerCase().includes(searchValue));
   }

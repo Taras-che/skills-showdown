@@ -11,5 +11,6 @@ export type FilterTableModel = {
   filterMultiple: boolean;
 }
 export type SearchFilterColumnModel = {
+  //any other column name to search
   name: string;
 }

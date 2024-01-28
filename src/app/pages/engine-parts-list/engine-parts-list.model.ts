@@ -1,4 +1,4 @@
-export type EnginPart = {
+export type EnginPartListItem = {
   id: number,
   name: string,
   category: string,

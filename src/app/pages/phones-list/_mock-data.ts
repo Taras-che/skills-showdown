@@ -1,11 +1,11 @@
-import { PhoneListModel } from './phones-list.model';
+import { PhoneListItem } from './phones-list.model';
 import { FilterTableModel } from '../shared/filter-table/filter-table.model';
 
-export function generatePhoneList(): PhoneListModel[] {
-  const shops = ['Rozetka', 'TTT', 'Comfy', 'Foxtrot'];
-  const brandsList = ['Nokia', 'Sony', 'Motorola'];
-  const phoneList: PhoneListModel[] = [];
+const shops = ['Rozetka', 'TTT', 'Comfy', 'Foxtrot'];
+const brandsList = ['Nokia', 'Sony', 'Motorola'];
+const phoneList: PhoneListItem[] = [];
 
+export function generatePhoneList(): PhoneListItem[] {
   for (let i = 1; i <= 1000; i++) {
     const phone = {
       id: i,
@@ -28,7 +28,6 @@ export const phoneTableColumns: FilterTableModel[] = [
   {
     columnName: 'Name',
     rowName: 'name',
-    customFilter: false,
     filterFn: null,
     filterMultiple: false,
     listOfFilter: [],
@@ -38,7 +37,6 @@ export const phoneTableColumns: FilterTableModel[] = [
   {
     columnName: 'Price',
     rowName: 'price',
-    customFilter: false,
     filterFn: null,
     filterMultiple: false,
     listOfFilter: [],
@@ -48,7 +46,6 @@ export const phoneTableColumns: FilterTableModel[] = [
   {
     columnName: 'Shop',
     rowName: 'shopToBuy',
-    customFilter: false,
     filterFn: null,
     filterMultiple: false,
     listOfFilter: [],
@@ -59,14 +56,14 @@ export const phoneTableColumns: FilterTableModel[] = [
     columnName: 'Brand',
     rowName: 'brand',
     defaultFilter: true,
-    filterFn: (brand: string, data: PhoneListModel) => data.brand.indexOf(brand) !== -1,
+    filterFn: (brand: string, data: PhoneListItem) => data.brand.indexOf(brand) !== -1,
     filterMultiple: false,
     listOfFilter: [
-      {text:'Nokia', value: 'Nokia'},
-      {text:'Sony', value: 'Sony'},
-      {text:'Motorola', value: 'Motorola'},
+      { text:'Nokia', value: 'Nokia' },
+      { text:'Sony', value: 'Sony' },
+      { text:'Motorola', value: 'Motorola' },
     ],
     sortDirections: [null],
-    sortFn: null
+    sortFn: (a: PhoneListItem, b: PhoneListItem) => a.price - b.price
   }
 ];

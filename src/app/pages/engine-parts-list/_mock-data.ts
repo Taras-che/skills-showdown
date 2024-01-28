@@ -1,11 +1,11 @@
-import { EnginPart } from './engine-parts-list.model';
+import { EnginPartListItem } from './engine-parts-list.model';
 import { FilterTableModel } from '../shared/filter-table/filter-table.model';
 
-export function generateEnginPartList(): EnginPart[] {
-  const categories = ['Piston', 'Crankshaft', 'Camshaft', 'Valve', 'Gasket'];
-  const shops = ['AutoParts Inc.', 'EngineMaster Shop', 'FastParts Outlet', 'Gearhead Supplies'];
-  const enginPartList: EnginPart[] = [];
+const categories = ['Piston', 'Crankshaft', 'Camshaft', 'Valve', 'Gasket'];
+const shops = ['AutoParts Inc.', 'EngineMaster Shop', 'FastParts Outlet', 'Gearhead Supplies'];
+const enginPartList: EnginPartListItem[] = [];
 
+export function generateEnginPartList(): EnginPartListItem[] {
   for (let i = 1; i <= 1000; i++) {
     const part = {
       id: i,
@@ -38,7 +38,7 @@ export const enginTableColumns: FilterTableModel[] = [
   { columnName: 'Category',
     rowName: 'category',
     defaultFilter: true,
-    filterFn: (list: string[], item: EnginPart) => list.some(category => item.category.indexOf(category) !== -1),
+    filterFn: (list: string[], item: EnginPartListItem) => list.some(category => item.category.indexOf(category) !== -1),
     filterMultiple: true,
     listOfFilter: [
       { text: 'Piston', value: 'Piston' },
@@ -52,17 +52,16 @@ export const enginTableColumns: FilterTableModel[] = [
   },
   { columnName: 'Price',
     rowName: 'price',
-    customFilter: false,
     filterFn: null,
     filterMultiple: false,
     listOfFilter: [],
     sortDirections: ['ascend', 'descend', null],
-    sortFn: (a: EnginPart, b: EnginPart) => a.price - b.price
+    sortFn: (a: EnginPartListItem, b: EnginPartListItem) => a.price - b.price
   },
   { columnName: 'Shop',
     rowName: 'shopToBuy',
     defaultFilter: true,
-    filterFn: (shopToBuy: string, data: EnginPart) => data.shopToBuy.indexOf(shopToBuy) !== -1,
+    filterFn: (shopToBuy: string, data: EnginPartListItem) => data.shopToBuy.indexOf(shopToBuy) !== -1,
     filterMultiple: false,
     listOfFilter: [
       { text: 'AutoParts Inc.', value:'AutoParts Inc' },
@@ -79,6 +78,6 @@ export const enginTableColumns: FilterTableModel[] = [
     filterMultiple: false,
     listOfFilter: [],
     sortDirections: ['ascend', 'descend', null],
-    sortFn: (a: EnginPart, b: EnginPart) => a.deliveryEstimate - b.deliveryEstimate
+    sortFn: (a: EnginPartListItem, b: EnginPartListItem) => a.deliveryEstimate - b.deliveryEstimate
   }
 ];

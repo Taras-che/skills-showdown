@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PhoneListModel } from './phones-list.model';
+import { PhoneListItem } from './phones-list.model';
 import { BehaviorSubject } from 'rxjs';
 import { generatePhoneList } from './_mock-data';
 
@@ -7,13 +7,13 @@ import { generatePhoneList } from './_mock-data';
   providedIn: 'root'
 })
 export class PhonesListService {
-  private enginPartsList = new BehaviorSubject<PhoneListModel[]>([])
+  private enginPartsList = new BehaviorSubject<PhoneListItem[]>([])
   public enginPartsListData$ = this.enginPartsList.asObservable()
 
   constructor() { }
 
   getPhoneList(): void {
-    const mockData: PhoneListModel[] = generatePhoneList();
+    const mockData: PhoneListItem[] = generatePhoneList();
 
     this.enginPartsList.next(mockData);
   }
