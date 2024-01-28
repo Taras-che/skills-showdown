@@ -18,10 +18,12 @@ export class EnginePartsListComponent implements OnInit, OnDestroy {
   }
 
    ngOnInit() {
-    this.enginService.getEnginPartsList();
-    this.initData()
+     this.initData()
+
+     this.enginService.getEnginPartsList();
   }
-  initData(): void {
+
+  private initData(): void {
     this.enginService.enginPartsListData$.pipe(takeUntil(this.unsubscribe$)).subscribe({
       next: (enginPartList: EnginPart[]) => this.enginPartsList = enginPartList,
       error: (error: Error) => console.error('Error fetching engin parts:', error)
