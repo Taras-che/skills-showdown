@@ -1,7 +1,8 @@
 import { EnginPart } from './engine-parts-list.model';
+import { FilterTableModel } from '../shared/filter-table/filter-table.model';
 
 export function generateEnginPartList(): EnginPart[] {
-  const categories = ['Piston', 'Crankshaft', 'Camshaft', 'Valve', 'Gasket', 'Spark Plug', 'Oil Filter'];
+  const categories = ['Piston', 'Crankshaft', 'Camshaft', 'Valve', 'Gasket'];
   const shops = ['AutoParts Inc.', 'EngineMaster Shop', 'FastParts Outlet', 'Gearhead Supplies'];
   const enginPartList: EnginPart[] = [];
 
@@ -23,3 +24,61 @@ export function generateEnginPartList(): EnginPart[] {
 function getRandomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+export const enginTableColumns: FilterTableModel[] = [
+  { columnName: 'Name',
+    rowName: 'name',
+    customFilter: true,
+    filterFn: null,
+    filterMultiple: false,
+    listOfFilter: [],
+    sortDirections: [null],
+    sortFn: null,
+  },
+  { columnName: 'Category',
+    rowName: 'category',
+    defaultFilter: true,
+    filterFn: (list: string[], item: EnginPart) => list.some(category => item.category.indexOf(category) !== -1),
+    filterMultiple: true,
+    listOfFilter: [
+      { text: 'Piston', value: 'Piston' },
+      { text: 'Crankshaft', value: 'Crankshaft' },
+      { text: 'Camshaft', value: 'Camshaft' },
+      { text: 'Valve', value: 'Valve' },
+      { text: 'Gasket', value: 'Gasket' },
+    ],
+    sortDirections: [null],
+    sortFn: null
+  },
+  { columnName: 'Price',
+    rowName: 'price',
+    customFilter: false,
+    filterFn: null,
+    filterMultiple: false,
+    listOfFilter: [],
+    sortDirections: ['ascend', 'descend', null],
+    sortFn: (a: EnginPart, b: EnginPart) => a.price - b.price
+  },
+  { columnName: 'Shop',
+    rowName: 'shopToBuy',
+    defaultFilter: true,
+    filterFn: (shopToBuy: string, data: EnginPart) => data.shopToBuy.indexOf(shopToBuy) !== -1,
+    filterMultiple: false,
+    listOfFilter: [
+      { text: 'AutoParts Inc.', value:'AutoParts Inc' },
+      { text: 'EngineMaster Shop', value:'EngineMaster Shop' },
+      { text: 'FastParts Outlet', value:'FastParts Outlet' },
+      { text: 'Gearhead Supplies', value:'Gearhead Supplies' }
+    ],
+    sortDirections: [null],
+    sortFn: null
+  },
+  { columnName: 'Delivery estimate',
+    rowName: 'deliveryEstimate',
+    filterFn: null,
+    filterMultiple: false,
+    listOfFilter: [],
+    sortDirections: ['ascend', 'descend', null],
+    sortFn: (a: EnginPart, b: EnginPart) => a.deliveryEstimate - b.deliveryEstimate
+  }
+];

@@ -1,1 +1,40 @@
-<p>{{tableData | json}}</p>
+<nz-table #nzTable [nzData]="listOfDisplayData" nzTableLayout="fixed">
+  <thead>
+  <tr>
+    <ng-container *ngFor="let column of tableColumns">
+      <th *ngIf="column.customFilter" [nzCustomFilter]="column.customFilter"
+          [nzSortFn]="column.sortFn"
+          [nzSortDirections]="column.sortDirections"
+          [nzFilterMultiple]="column.filterMultiple">
+        {{ column.columnName }}
+        <form [formGroup]="searchForm" nz-form class="customFilterForm">
+          <nz-form-item>
+            <nz-form-control>
+              <input nz-input formControlName="searchValue" placeholder="Search" (input)="onSearch()">
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </th>
+      <th *ngIf="column.defaultFilter" [nzFilters]="column.listOfFilter"
+          [nzFilterFn]="column.filterFn"
+          [nzSortFn]="column.sortFn"
+          [nzSortDirections]="column.sortDirections"
+          [nzFilterMultiple]="column.filterMultiple">
+        {{ column.columnName }}
+      </th>
+      <th *ngIf="!column.defaultFilter && !column.customFilter"
+          [nzSortFn]="column.sortFn"
+          [nzSortDirections]="column.sortDirections"
+          [nzFilterMultiple]="column.filterMultiple">
+        {{ column.columnName }}
+      </th>
+    </ng-container>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let row of nzTable.data">
+    <td *ngFor="let column of tableColumns">{{ row[column.rowName] }}</td>
+  </tr>
+  </tbody>
+</nz-table>

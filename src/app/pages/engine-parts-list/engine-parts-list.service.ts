@@ -14,9 +14,6 @@ export class EnginePartsListService {
 
   getEnginPartsList(): void {
     const mockData: EnginPart[] = generateEnginPartList();
-    // Simulate a delay of 1 second before returning the data
-    setTimeout(() => {
-      this.enginPartsList.next(mockData);
-    }, 1000)
+    this.enginPartsList.next(mockData);
   }
 }
