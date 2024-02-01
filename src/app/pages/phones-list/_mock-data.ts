@@ -1,5 +1,5 @@
 import { PhoneListItem } from './phones-list.model';
-import { FilterTableModel } from '../shared/filter-table/filter-table.model';
+import { SearchFilterColumnModel } from '../shared/filter-table/filter-table.model';
 
 const shops = ['Rozetka', 'TTT', 'Comfy', 'Foxtrot'];
 const brandsList = ['Nokia', 'Sony', 'Motorola'];
@@ -24,37 +24,44 @@ function getRandomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-export const phoneTableColumns: FilterTableModel[] = [
+function getRandomBoolean() {
+  return Math.random() < 0.5;
+}
+
+export const phoneTableColumns: SearchFilterColumnModel[] = [
   {
-    columnName: 'Name',
-    rowName: 'name',
+    title: 'Name',
+    property: 'name',
     filterFn: null,
     filterMultiple: false,
     listOfFilter: [],
     sortDirections: [null],
-    sortFn: null
+    sortFn: null,
+    searchable: getRandomBoolean(),
   },
   {
-    columnName: 'Price',
-    rowName: 'price',
+    title: 'Price',
+    property: 'price',
     filterFn: null,
     filterMultiple: false,
     listOfFilter: [],
     sortDirections: [null],
-    sortFn: null
+    sortFn: null,
+    searchable: false,
   },
   {
-    columnName: 'Shop',
-    rowName: 'shopToBuy',
+    title: 'Shop',
+    property: 'shopToBuy',
     filterFn: null,
     filterMultiple: false,
     listOfFilter: [],
     sortDirections: [null],
-    sortFn: null
+    sortFn: null,
+    searchable: getRandomBoolean(),
   },
   {
-    columnName: 'Brand',
-    rowName: 'brand',
+    title: 'Brand',
+    property: 'brand',
     defaultFilter: true,
     filterFn: (brand: string, data: PhoneListItem) => data.brand.indexOf(brand) !== -1,
     filterMultiple: false,
@@ -64,6 +71,7 @@ export const phoneTableColumns: FilterTableModel[] = [
       { text:'Motorola', value: 'Motorola' },
     ],
     sortDirections: [null],
-    sortFn: (a: PhoneListItem, b: PhoneListItem) => a.price - b.price
+    sortFn: (a: PhoneListItem, b: PhoneListItem) => a.price - b.price,
+    searchable: getRandomBoolean(),
   }
 ];

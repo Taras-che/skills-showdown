@@ -2,15 +2,16 @@
   <thead>
   <tr>
     <ng-container *ngFor="let column of tableColumns">
-      <th *ngIf="column.customFilter" [nzCustomFilter]="column.customFilter"
+      <th *ngIf="column.searchable && !column.defaultFilter"
+          [nzCustomFilter]="column.searchable"
           [nzSortFn]="column.sortFn"
           [nzSortDirections]="column.sortDirections"
           [nzFilterMultiple]="column.filterMultiple">
-        {{ column.columnName }}
+        {{ column.title }}
         <form [formGroup]="searchForm" nz-form class="customFilterForm">
           <nz-form-item>
             <nz-form-control>
-              <input nz-input formControlName="searchValue" placeholder="Search" (input)="onSearch()">
+              <input nz-input formControlName="searchValue" placeholder="Search" (input)="onSearch(column.property)">
             </nz-form-control>
           </nz-form-item>
         </form>
@@ -20,13 +21,13 @@
           [nzSortFn]="column.sortFn"
           [nzSortDirections]="column.sortDirections"
           [nzFilterMultiple]="column.filterMultiple">
-        {{ column.columnName }}
+        {{ column.title }}
       </th>
-      <th *ngIf="!column.defaultFilter && !column.customFilter"
+      <th *ngIf="!column.defaultFilter && !column.searchable"
           [nzSortFn]="column.sortFn"
           [nzSortDirections]="column.sortDirections"
           [nzFilterMultiple]="column.filterMultiple">
-        {{ column.columnName }}
+        {{ column.title }}
       </th>
     </ng-container>
 
@@ -34,7 +35,7 @@
   </thead>
   <tbody>
   <tr *ngFor="let row of nzTable.data">
-    <td *ngFor="let column of tableColumns">{{ row[column.rowName] }}</td>
+    <td *ngFor="let column of tableColumns">{{ row[column.property] }}</td>
   </tr>
   </tbody>
 </nz-table>

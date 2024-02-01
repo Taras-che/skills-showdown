@@ -1,4 +1,4 @@
-export type PhoneListItem = {
+export interface PhoneListItem {
   id: number,
   name: string,
   brand: string,

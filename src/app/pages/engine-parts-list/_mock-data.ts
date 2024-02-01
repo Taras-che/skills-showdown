@@ -1,5 +1,5 @@
 import { EnginPartListItem } from './engine-parts-list.model';
-import { FilterTableModel } from '../shared/filter-table/filter-table.model';
+import { SearchFilterColumnModel } from '../shared/filter-table/filter-table.model';
 
 const categories = ['Piston', 'Crankshaft', 'Camshaft', 'Valve', 'Gasket'];
 const shops = ['AutoParts Inc.', 'EngineMaster Shop', 'FastParts Outlet', 'Gearhead Supplies'];
@@ -25,41 +25,44 @@ function getRandomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-export const enginTableColumns: FilterTableModel[] = [
-  { columnName: 'Name',
-    rowName: 'name',
-    customFilter: true,
+function getRandomBoolean() {
+  return Math.random() < 0.5;
+}
+
+export const enginTableColumns: SearchFilterColumnModel[] = [
+  {
+    title: 'Name',
+    property: 'name',
     filterFn: null,
     filterMultiple: false,
     listOfFilter: [],
     sortDirections: [null],
     sortFn: null,
+    searchable: getRandomBoolean(),
   },
-  { columnName: 'Category',
-    rowName: 'category',
-    defaultFilter: true,
-    filterFn: (list: string[], item: EnginPartListItem) => list.some(category => item.category.indexOf(category) !== -1),
+  {
+    title: 'Category',
+    property: 'category',
+    filterFn: null,
     filterMultiple: true,
-    listOfFilter: [
-      { text: 'Piston', value: 'Piston' },
-      { text: 'Crankshaft', value: 'Crankshaft' },
-      { text: 'Camshaft', value: 'Camshaft' },
-      { text: 'Valve', value: 'Valve' },
-      { text: 'Gasket', value: 'Gasket' },
-    ],
+    listOfFilter: [],
     sortDirections: [null],
-    sortFn: null
+    sortFn: null,
+    searchable: getRandomBoolean(),
   },
-  { columnName: 'Price',
-    rowName: 'price',
+  {
+    title: 'Price',
+    property: 'price',
     filterFn: null,
     filterMultiple: false,
     listOfFilter: [],
-    sortDirections: ['ascend', 'descend', null],
-    sortFn: (a: EnginPartListItem, b: EnginPartListItem) => a.price - b.price
+    sortDirections: [null],
+    sortFn: null,
+    searchable: false,
   },
-  { columnName: 'Shop',
-    rowName: 'shopToBuy',
+  {
+    title: 'Shop',
+    property: 'shopToBuy',
     defaultFilter: true,
     filterFn: (shopToBuy: string, data: EnginPartListItem) => data.shopToBuy.indexOf(shopToBuy) !== -1,
     filterMultiple: false,
@@ -70,14 +73,17 @@ export const enginTableColumns: FilterTableModel[] = [
       { text: 'Gearhead Supplies', value:'Gearhead Supplies' }
     ],
     sortDirections: [null],
-    sortFn: null
+    sortFn: null,
+    searchable: getRandomBoolean(),
   },
-  { columnName: 'Delivery estimate',
-    rowName: 'deliveryEstimate',
+  {
+    title: 'Delivery estimate',
+    property: 'deliveryEstimate',
     filterFn: null,
     filterMultiple: false,
     listOfFilter: [],
     sortDirections: ['ascend', 'descend', null],
-    sortFn: (a: EnginPartListItem, b: EnginPartListItem) => a.deliveryEstimate - b.deliveryEstimate
+    sortFn: null,
+    searchable: false,
   }
 ];

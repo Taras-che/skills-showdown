@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FilterTableModel, SearchFilterColumnModel } from './filter-table.model';
+import { SearchFilterColumnModel } from './filter-table.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -7,13 +7,13 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './filter-table.component.html',
   styleUrls: ['./filter-table.component.scss']
 })
-export class FilterTableComponent<T extends SearchFilterColumnModel> {
+export class FilterTableComponent {
   public searchValue: string = '';
   public visible: boolean = false;
   public searchForm: FormGroup;
 
-  @Input() tableData: T[] = [];
-  @Input() tableColumns: FilterTableModel[] = [];
+  @Input() tableData: any[] = [];
+  @Input() tableColumns: SearchFilterColumnModel[] = [];
   public listOfDisplayData: any[] = [];
 
   constructor(public fb: FormBuilder) {
@@ -22,12 +22,16 @@ export class FilterTableComponent<T extends SearchFilterColumnModel> {
     });
   }
   ngOnInit() {
-    this.listOfDisplayData = this.tableData
+    this.listOfDisplayData = this.tableData;
   }
 
-  onSearch(): void {
-    //don't happy with this it's not fully dynamic table. Problem when want to search in multiple columns.
-    const searchValue = this.searchForm.get('searchValue')?.value.toLowerCase();
-    this.listOfDisplayData = this.tableData.filter((item: T) => item.name.toLowerCase().includes(searchValue));
+  onSearch(columnName: string): void {
+    const searchValue = this.searchForm.get('searchValue')?.value.toLowerCase().trim().replaceAll(' ', '');
+
+    this.listOfDisplayData = this.tableData.filter((item: any) => item[columnName]
+      .toLowerCase()
+      .trim()
+      .replaceAll(' ', '')
+      .includes(searchValue));
   }
 }
