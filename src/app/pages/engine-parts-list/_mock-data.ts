@@ -83,7 +83,7 @@ export const enginTableColumns: SearchFilterColumnModel[] = [
     filterMultiple: false,
     listOfFilter: [],
     sortDirections: ['ascend', 'descend', null],
-    sortFn: null,
+    sortFn: (a: EnginPartListItem, b: EnginPartListItem) => a.deliveryEstimate - b.deliveryEstimate,
     searchable: false,
   }
 ];

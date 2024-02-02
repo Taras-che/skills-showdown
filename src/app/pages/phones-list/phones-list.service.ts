@@ -1,20 +1,16 @@
 import { Injectable } from '@angular/core';
 import { PhoneListItem } from './phones-list.model';
-import { BehaviorSubject } from 'rxjs';
+import { Observable, of, delay } from 'rxjs';
 import { generatePhoneList } from './_mock-data';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PhonesListService {
-  private enginPartsList = new BehaviorSubject<PhoneListItem[]>([])
-  public enginPartsListData$ = this.enginPartsList.asObservable()
 
-  constructor() { }
-
-  getPhoneList(): void {
+  getPhoneList(): Observable<PhoneListItem[]> {
     const mockData: PhoneListItem[] = generatePhoneList();
 
-    this.enginPartsList.next(mockData);
+    return of(mockData).pipe(delay(1000));
   }
 }

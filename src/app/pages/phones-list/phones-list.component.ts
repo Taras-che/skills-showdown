@@ -18,7 +18,6 @@ export class PhonesListComponent implements OnInit, OnDestroy {
   }
    ngOnInit() {
     this.initData();
-    this.phoneListService.getPhoneList();
   }
 
   ngOnDestroy(): void {
@@ -27,10 +26,10 @@ export class PhonesListComponent implements OnInit, OnDestroy {
   }
 
   private initData(): void {
-    this.phoneListService.enginPartsListData$.pipe(takeUntil(this.unsubscribe$)).subscribe({
+    this.phoneListService.getPhoneList().pipe(takeUntil(this.unsubscribe$)).subscribe({
       next: (phoneList: PhoneListItem[]) => this.phonesList = phoneList,
       error: (error) => console.error('Error fetching engin parts:', error)
-    })
+    });
   }
 
 

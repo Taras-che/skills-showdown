@@ -45,8 +45,8 @@ export const phoneTableColumns: SearchFilterColumnModel[] = [
     filterFn: null,
     filterMultiple: false,
     listOfFilter: [],
-    sortDirections: [null],
-    sortFn: null,
+    sortDirections: ['ascend', 'descend', null],
+    sortFn: (a: PhoneListItem, b: PhoneListItem) => a.price - b.price,
     searchable: false,
   },
   {
@@ -71,7 +71,7 @@ export const phoneTableColumns: SearchFilterColumnModel[] = [
       { text:'Motorola', value: 'Motorola' },
     ],
     sortDirections: [null],
-    sortFn: (a: PhoneListItem, b: PhoneListItem) => a.price - b.price,
+    sortFn: null,
     searchable: getRandomBoolean(),
   }
 ];
