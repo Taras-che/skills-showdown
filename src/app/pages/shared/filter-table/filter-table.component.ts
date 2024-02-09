@@ -24,7 +24,7 @@ export class FilterTableComponent implements OnChanges {
     });
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if(changes['tableData'] && changes['tableData'].currentValue !== undefined) {
       this.listOfDisplayData = this.tableData;
       this.isDataLoaded$.next(true)

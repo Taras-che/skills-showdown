@@ -17,7 +17,7 @@ export class EnginePartsListComponent implements OnInit, OnDestroy {
   constructor(private readonly enginService: EnginePartsListService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
      this.initData()
   }
 
@@ -32,5 +32,4 @@ export class EnginePartsListComponent implements OnInit, OnDestroy {
       error: (error: Error) => console.error('Error fetching engin parts:', error)
     })
   }
-
 }

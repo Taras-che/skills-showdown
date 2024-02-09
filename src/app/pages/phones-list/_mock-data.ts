@@ -37,7 +37,7 @@ export const phoneTableColumns: SearchFilterColumnModel[] = [
     listOfFilter: [],
     sortDirections: [null],
     sortFn: null,
-    searchable: getRandomBoolean(),
+    searchable: true,
   },
   {
     title: 'Price',
@@ -57,7 +57,7 @@ export const phoneTableColumns: SearchFilterColumnModel[] = [
     listOfFilter: [],
     sortDirections: [null],
     sortFn: null,
-    searchable: getRandomBoolean(),
+    searchable: true,
   },
   {
     title: 'Brand',

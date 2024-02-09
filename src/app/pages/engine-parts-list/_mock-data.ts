@@ -25,10 +25,6 @@ function getRandomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function getRandomBoolean() {
-  return Math.random() < 0.5;
-}
-
 export const enginTableColumns: SearchFilterColumnModel[] = [
   {
     title: 'Name',
@@ -38,7 +34,7 @@ export const enginTableColumns: SearchFilterColumnModel[] = [
     listOfFilter: [],
     sortDirections: [null],
     sortFn: null,
-    searchable: getRandomBoolean(),
+    searchable: true,
   },
   {
     title: 'Category',
@@ -48,7 +44,7 @@ export const enginTableColumns: SearchFilterColumnModel[] = [
     listOfFilter: [],
     sortDirections: [null],
     sortFn: null,
-    searchable: getRandomBoolean(),
+    searchable: true,
   },
   {
     title: 'Price',
@@ -74,7 +70,7 @@ export const enginTableColumns: SearchFilterColumnModel[] = [
     ],
     sortDirections: [null],
     sortFn: null,
-    searchable: getRandomBoolean(),
+    searchable: true,
   },
   {
     title: 'Delivery estimate',

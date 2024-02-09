@@ -31,6 +31,4 @@ export class PhonesListComponent implements OnInit, OnDestroy {
       error: (error) => console.error('Error fetching engin parts:', error)
     });
   }
-
-
 }
