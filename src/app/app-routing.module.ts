@@ -6,7 +6,9 @@ const routes: Routes = [
   { path: 'engine-parts', loadChildren:
       () => import('./pages/engine-parts-list/engine-parts-list.module').then(m => m.EnginePartsListModule) },
   { path: 'phones', loadChildren:
-      () => import('./pages/phones-list/phones-list.module').then(m => m.PhonesListModule) }
+      () => import('./pages/phones-list/phones-list.module').then(m => m.PhonesListModule) },
+  { path: 'git-users', loadChildren:
+      () => import('./pages/user-list/user-list.module').then(m => m.UserListModule) },
 ];
 
 @NgModule({
