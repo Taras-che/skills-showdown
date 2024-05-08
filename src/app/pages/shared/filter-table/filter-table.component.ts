@@ -1,7 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { SearchFilterColumnModel } from './filter-table.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-filter-table',
@@ -15,8 +14,8 @@ export class FilterTableComponent implements OnChanges {
 
   @Input() tableData: any[] = [];
   @Input() tableColumns: SearchFilterColumnModel[] = [];
+  @Input() isDataLoading: boolean;
   public listOfDisplayData: any[] = [];
-  public isDataLoaded$: Subject<boolean> = new Subject()
 
   constructor(public fb: FormBuilder) {
     this.searchForm = this.fb.group({
@@ -27,7 +26,6 @@ export class FilterTableComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if(changes['tableData'] && changes['tableData'].currentValue !== undefined) {
       this.listOfDisplayData = this.tableData;
-      this.isDataLoaded$.next(true)
     }
   }
 

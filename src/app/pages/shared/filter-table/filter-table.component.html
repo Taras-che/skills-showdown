@@ -1,4 +1,6 @@
-<nz-table #nzTable [nzData]="listOfDisplayData" [nzLoading]="!(isDataLoaded$ | async)" nzTableLayout="fixed">
+<nz-table #nzTable [nzData]="listOfDisplayData"
+          [nzLoading]="isDataLoading"
+          nzTableLayout="fixed">
   <thead>
   <tr>
     <ng-container *ngFor="let column of tableColumns">

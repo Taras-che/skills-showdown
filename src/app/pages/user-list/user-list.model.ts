@@ -57,6 +57,5 @@ export const userListTableColumns: SearchFilterColumnModel[] = [
     sortDirections: [null],
     sortFn: null,
     searchable: false,
-    isImage: false
   },
 ]
