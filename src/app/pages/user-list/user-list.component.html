@@ -1,0 +1,9 @@
+<form nz-form>
+  <nz-form-control class="userSearchControl" [nzValidateStatus]="'success'">
+    <input nz-input [formControl]="search" placeholder="Search user">
+  </nz-form-control>
+</form>
+<app-filter-table [tableData]="usersList"
+                  [tableColumns]="userListTableColumns"
+                  [isDataLoading]="isDataLoading">
+</app-filter-table>
