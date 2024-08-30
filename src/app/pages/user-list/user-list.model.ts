@@ -1,4 +1,4 @@
-import { SearchFilterColumnModel } from '../shared/filter-table/filter-table.model';
+import { FilterTableColumn } from '../shared/filter-table/filter-table.model';
 export interface User {
   avatar_url: string
   events_url: string
@@ -21,13 +21,13 @@ export interface User {
   url: string
 }
 
-export interface Response {
+export interface UserResponse {
   incomplete_results: boolean;
   items: User[]
   total_count: number
 }
 
-export const userListTableColumns: SearchFilterColumnModel[] = [
+export const userListTableColumns: FilterTableColumn<Partial<User>>[] = [
   {
     title: 'Name',
     property: 'login',

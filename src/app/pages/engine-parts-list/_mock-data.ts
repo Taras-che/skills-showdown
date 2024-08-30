@@ -1,11 +1,12 @@
 import { EnginPartListItem } from './engine-parts-list.model';
-import { SearchFilterColumnModel } from '../shared/filter-table/filter-table.model';
+import { FilterTableColumn } from '../shared/filter-table/filter-table.model';
 
 const categories = ['Piston', 'Crankshaft', 'Camshaft', 'Valve', 'Gasket'];
 const shops = ['AutoParts Inc.', 'EngineMaster Shop', 'FastParts Outlet', 'Gearhead Supplies'];
-const enginPartList: EnginPartListItem[] = [];
 
 export function generateEnginPartList(): EnginPartListItem[] {
+  const enginPartList: EnginPartListItem[] = [];
+
   for (let i = 1; i <= 1000; i++) {
     const part = {
       id: i,
@@ -25,7 +26,7 @@ function getRandomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-export const enginTableColumns: SearchFilterColumnModel[] = [
+export const enginTableColumns: FilterTableColumn<EnginPartListItem>[] = [
   {
     title: 'Name',
     property: 'name',

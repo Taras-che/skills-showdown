@@ -9,7 +9,7 @@ import {
   takeUntil, tap,
 } from 'rxjs';
 import { User, userListTableColumns } from './user-list.model';
-import { SearchFilterColumnModel } from '../shared/filter-table/filter-table.model';
+import { FilterTableColumn } from '../shared/filter-table/filter-table.model';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -18,7 +18,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit, OnDestroy {
-  public userListTableColumns: SearchFilterColumnModel[] = userListTableColumns;
+  public userListTableColumns: FilterTableColumn<Partial<User>>[] = userListTableColumns;
   public usersList: Partial<User>[] = [];
   public search: FormControl = new FormControl();
   public isDataLoading: boolean = false;

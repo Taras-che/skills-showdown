@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PhoneListItem } from './phones-list.model';
 import { Subject, takeUntil } from 'rxjs';
 import { phoneTableColumns } from './_mock-data';
-import { SearchFilterColumnModel } from '../shared/filter-table/filter-table.model';
+import { FilterTableColumn } from '../shared/filter-table/filter-table.model';
 import { PhonesListService } from './phones-list.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { PhonesListService } from './phones-list.service';
 })
 export class PhonesListComponent implements OnInit, OnDestroy {
   public phonesList: PhoneListItem[]= [];
-  public phoneTableColumns: SearchFilterColumnModel[] = phoneTableColumns;
+  public phoneTableColumns: FilterTableColumn<PhoneListItem>[] = phoneTableColumns;
   private unsubscribe$: Subject<void> = new Subject<void>();
 
   constructor(private readonly phoneListService: PhonesListService) {

@@ -11,6 +11,6 @@ export class PhonesListService {
   getPhoneList(): Observable<PhoneListItem[]> {
     const mockData: PhoneListItem[] = generatePhoneList();
 
-    return of(mockData).pipe(delay(5000));
+    return of(mockData).pipe(delay(2500));
   }
 }

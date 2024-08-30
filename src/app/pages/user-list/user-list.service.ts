@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable, throwError } from 'rxjs';
-import { Response, User } from './user-list.model';
+import { UserResponse, User } from './user-list.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +14,8 @@ export class UserListService {
 
   //get data and map response for specific prop we need
   getData(userName: string): Observable<Partial<User>[]> {
-    return this.http.get<Response>(`${this.url}${userName}`).pipe(
-      map((response: Response) => response.items.slice()
+    return this.http.get<UserResponse>(`${this.url}${userName}`).pipe(
+      map((response: UserResponse) => response.items.slice()
         .map((user:User) => {
           return {
             login: user.login,

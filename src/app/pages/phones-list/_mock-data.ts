@@ -1,5 +1,5 @@
 import { PhoneListItem } from './phones-list.model';
-import { SearchFilterColumnModel } from '../shared/filter-table/filter-table.model';
+import { FilterTableColumn } from '../shared/filter-table/filter-table.model';
 
 const shops = ['Rozetka', 'TTT', 'Comfy', 'Foxtrot'];
 const brandsList = ['Nokia', 'Sony', 'Motorola'];
@@ -28,7 +28,7 @@ function getRandomBoolean() {
   return Math.random() < 0.5;
 }
 
-export const phoneTableColumns: SearchFilterColumnModel[] = [
+export const phoneTableColumns: FilterTableColumn<PhoneListItem>[] = [
   {
     title: 'Name',
     property: 'name',

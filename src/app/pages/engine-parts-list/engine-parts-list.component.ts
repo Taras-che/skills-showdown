@@ -3,7 +3,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { EnginPartListItem } from './engine-parts-list.model';
 import { EnginePartsListService } from './engine-parts-list.service';
 import { enginTableColumns } from './_mock-data';
-import { SearchFilterColumnModel } from '../shared/filter-table/filter-table.model';
+import { FilterTableColumn } from '../shared/filter-table/filter-table.model';
 
 @Component({
   selector: 'app-engine-parts-list',
@@ -11,7 +11,7 @@ import { SearchFilterColumnModel } from '../shared/filter-table/filter-table.mod
 })
 export class EnginePartsListComponent implements OnInit, OnDestroy {
   public enginPartsList: EnginPartListItem[] = []
-  public enginTableColumns: SearchFilterColumnModel[] = enginTableColumns;
+  public enginTableColumns: FilterTableColumn<EnginPartListItem>[] = enginTableColumns;
   private unsubscribe$: Subject<void> = new Subject<void>();
 
   constructor(private readonly enginService: EnginePartsListService) {

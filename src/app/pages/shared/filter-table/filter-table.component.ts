@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { SearchFilterColumnModel } from './filter-table.model';
+import { FilterTableColumn } from './filter-table.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -7,15 +7,15 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './filter-table.component.html',
   styleUrls: ['./filter-table.component.scss']
 })
-export class FilterTableComponent implements OnChanges {
+export class FilterTableComponent<T> implements OnChanges {
   public searchValue: string = '';
   public visible: boolean = false;
   public searchForm: FormGroup;
 
-  @Input() tableData: any[] = [];
-  @Input() tableColumns: SearchFilterColumnModel[] = [];
+  @Input() tableData: T[] = [];
+  @Input() tableColumns: FilterTableColumn<T>[] = [];
   @Input() isDataLoading: boolean;
-  public listOfDisplayData: any[] = [];
+  public listOfDisplayData: T[] = [];
 
   constructor(public fb: FormBuilder) {
     this.searchForm = this.fb.group({
@@ -29,7 +29,7 @@ export class FilterTableComponent implements OnChanges {
     }
   }
 
-  public onSearch(columnName: string): void {
+  public onSearch(columnName: any): void {
     const searchValue = this.searchForm.get('searchValue')?.value
       .toLowerCase()
       .trim()
