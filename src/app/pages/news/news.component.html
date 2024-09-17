@@ -9,7 +9,7 @@
 
 <div class="item-container">
     <ng-container *ngIf="(displayItems$ | async) as displayItems; else loading">
-      <div *ngFor="let article of (displayItems | filterHighlight:searchForm.get('search')?.value | async)" class="article-card">
+      <div *ngFor="let article of (displayItems | filterHighlight:(searchText$ | async))" class="news-card">
         <mat-card>
           <img mat-card-image [src]="article.image_url" alt="{{article.title}}">
           <mat-card-content>
