@@ -1,4 +1,4 @@
-import { FilterTableColumn } from '../shared/filter-table/filter-table.model';
+import { FilterTableColumn } from '../../shared/filter-table/filter-table.model';
 export interface User {
   avatar_url: string
   events_url: string

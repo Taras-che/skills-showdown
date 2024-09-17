@@ -9,7 +9,7 @@ import {
   takeUntil, tap,
 } from 'rxjs';
 import { User, userListTableColumns } from './user-list.model';
-import { FilterTableColumn } from '../shared/filter-table/filter-table.model';
+import { FilterTableColumn } from '../../shared/filter-table/filter-table.model';
 import { FormControl } from '@angular/forms';
 
 @Component({

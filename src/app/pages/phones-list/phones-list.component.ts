@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PhoneListItem } from './phones-list.model';
 import { Subject, takeUntil } from 'rxjs';
 import { phoneTableColumns } from './_mock-data';
-import { FilterTableColumn } from '../shared/filter-table/filter-table.model';
+import { FilterTableColumn } from '../../shared/filter-table/filter-table.model';
 import { PhonesListService } from './phones-list.service';
 
 @Component({

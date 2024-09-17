@@ -6,6 +6,8 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   imports: [
@@ -14,9 +16,10 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
     NzFormModule,
     ReactiveFormsModule,
     NzInputModule,
-    NzSpinModule
+    NzSpinModule,
+    MatProgressSpinnerModule
   ],
-  declarations: [FilterTableComponent],
-  exports: [FilterTableComponent],
+  declarations: [FilterTableComponent, LoaderComponent],
+  exports: [FilterTableComponent, LoaderComponent],
 })
 export class SharedModule { }

@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="search-container" [formGroup]="searchForm">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Filter by keywords</mat-label>
+      <input matInput [formControlName]="'search'" placeholder="Search">
+    </mat-form-field>
+  </div>
+</div>
+
+<div class="item-container">
+    <ng-container *ngIf="(displayItems$ | async) as displayItems; else loading">
+      <div *ngFor="let article of (displayItems | filterHighlight:searchForm.get('search')?.value | async)" class="article-card">
+        <mat-card>
+          <img mat-card-image [src]="article.image_url" alt="{{article.title}}">
+          <mat-card-content>
+            <div class="date">
+              <mat-icon aria-hidden="false"
+                        aria-label="Calendar"
+                        fontIcon="calendar_today">
+              </mat-icon>
+              <span>{{ article.published_at | date: 'MMMM d, y' }}</span>
+            </div>
+            <mat-card-title [innerHTML]="article.title_highlighted ? article.title_highlighted : article.title"></mat-card-title>
+            <mat-card-content>
+              <p [innerHTML]="article.description_highlighted ? article.description_highlighted : article.summary"></p>
+            </mat-card-content>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button [routerLink]="['article', article.id]">Read more →</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </ng-container>
+
+  <ng-template #loading>
+    <app-loader></app-loader>
+  </ng-template>
+  </div>

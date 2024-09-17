@@ -1,5 +1,5 @@
 import { PhoneListItem } from './phones-list.model';
-import { FilterTableColumn } from '../shared/filter-table/filter-table.model';
+import { FilterTableColumn } from '../../shared/filter-table/filter-table.model';
 
 const shops = ['Rozetka', 'TTT', 'Comfy', 'Foxtrot'];
 const brandsList = ['Nokia', 'Sony', 'Motorola'];

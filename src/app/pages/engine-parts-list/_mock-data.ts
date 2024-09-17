@@ -1,5 +1,5 @@
 import { EnginPartListItem } from './engine-parts-list.model';
-import { FilterTableColumn } from '../shared/filter-table/filter-table.model';
+import { FilterTableColumn } from '../../shared/filter-table/filter-table.model';
 
 const categories = ['Piston', 'Crankshaft', 'Camshaft', 'Valve', 'Gasket'];
 const shops = ['AutoParts Inc.', 'EngineMaster Shop', 'FastParts Outlet', 'Gearhead Supplies'];

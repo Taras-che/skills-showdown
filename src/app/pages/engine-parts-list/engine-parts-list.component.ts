@@ -3,7 +3,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { EnginPartListItem } from './engine-parts-list.model';
 import { EnginePartsListService } from './engine-parts-list.service';
 import { enginTableColumns } from './_mock-data';
-import { FilterTableColumn } from '../shared/filter-table/filter-table.model';
+import { FilterTableColumn } from '../../shared/filter-table/filter-table.model';
 
 @Component({
   selector: 'app-engine-parts-list',

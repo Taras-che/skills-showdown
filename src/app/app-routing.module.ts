@@ -9,6 +9,8 @@ const routes: Routes = [
       () => import('./pages/phones-list/phones-list.module').then(m => m.PhonesListModule) },
   { path: 'git-users', loadChildren:
       () => import('./pages/user-list/user-list.module').then(m => m.UserListModule) },
+  { path: 'news', loadChildren:
+      () => import('./pages/news/news.module').then(m => m.NewsModule) },
 ];
 
 @NgModule({
