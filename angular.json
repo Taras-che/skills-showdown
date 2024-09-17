@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "dynamic-filtering:build:production"
+              "buildTarget": "dynamic-filtering:build:production"
             },
             "development": {
-              "browserTarget": "dynamic-filtering:build:development"
+              "buildTarget": "dynamic-filtering:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "dynamic-filtering:build"
+            "buildTarget": "dynamic-filtering:build"
           }
         },
         "test": {
