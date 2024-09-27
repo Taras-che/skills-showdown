@@ -1,2 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @import "app/pages/news/pipes/hightlight";
+
+.dialog-content {
+  font-size: 14px;
+}
+
+.dialog-actions {
+  padding: 8px 24px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dialog-actions button{
+  margin-left: 0.5rem;
+}
+
