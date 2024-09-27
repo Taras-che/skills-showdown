@@ -11,6 +11,8 @@ const routes: Routes = [
       () => import('./pages/user-list/user-list.module').then(m => m.UserListModule) },
   { path: 'news', loadChildren:
       () => import('./pages/news/news.module').then(m => m.NewsModule) },
+  { path: 'book-list', loadComponent:
+      () => import('./pages/books/book-list/book-list.component').then(m => m.BookListComponent) },
 ];
 
 @NgModule({

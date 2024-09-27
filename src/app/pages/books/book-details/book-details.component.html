@@ -1,0 +1,14 @@
+<div mat-dialog-content class="dialog-content">
+  <h1 mat-dialog-title>{{ book.title }}</h1>
+
+  <p><strong>Author:</strong> {{ book.author }}</p>
+  <p><strong>Year:</strong> {{ book.year }}</p>
+  <p>
+    <strong>Description: </strong>
+    <ng-container *ngIf="book.description; else noDescription">{{ book.description }}</ng-container>
+    <ng-template #noDescription>Description is empty</ng-template>
+  </p>
+</div>
+<div mat-dialog-actions class="dialog-actions">
+  <button mat-button (click)="closeModal()">Close</button>
+</div>

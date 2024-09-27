@@ -1,0 +1,40 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  background-color: inherit;
+}
+
+.list-container {
+  padding: 4rem;
+}
+
+.action-cell {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-field {
+  margin-top: 1.4rem;
+  width: 100%;
+  max-width: 300px;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .form-field {
+    max-width: 100%;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .spacer {
+    display: none;
+  }
+}

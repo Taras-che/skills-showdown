@@ -31,7 +31,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.search.valueChanges
       .pipe(
-        debounceTime(1500),
+        debounceTime(1250),
         distinctUntilChanged(),
         filter(searchText=> searchText.length > 3),
         tap(() => this.isDataLoading = true),
