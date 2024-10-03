@@ -37,6 +37,7 @@ import { DialogResponse } from '../../../shared/confirm-dialog/confirm-dialog.mo
 export class BookListComponent implements OnInit {
   private searchSubject: Subject<string> = new Subject<string>();
   private unsubscribe$: Subject<void> = new Subject<void>();
+  private dialogResponse = DialogResponse;
   public books: Book[] = [];
   public dataSource: MatTableDataSource<Book> = new MatTableDataSource<Book>([]);
   public displayedColumns: string[] = ['title', 'author', 'year', 'action'];
@@ -96,8 +97,8 @@ export class BookListComponent implements OnInit {
       data: { mode: BookMode.add, bookId: this.books.length +1 },
       maxWidth: 900,
       // no needs to unsubscribe because when dialog close angular destroy all subs
-    }).afterClosed().subscribe((res: string) => {
-      if(res === DialogResponse.No) return;
+    }).afterClosed().subscribe((dialogResult: string) => {
+      if(dialogResult === undefined || dialogResult === this.dialogResponse.No) return;
 
       this.pushNotification('Book successfully added!', 2000);
       this.getDataFromService();
@@ -109,7 +110,7 @@ export class BookListComponent implements OnInit {
       data: { mode: BookMode.edit, book },
       maxWidth: 900,
     }).afterClosed()
-      .pipe(filter(dialogResult => dialogResult === DialogResponse.Yes))
+      .pipe(filter(dialogResult => dialogResult === this.dialogResponse.Yes))
       .subscribe(() =>
         this.pushNotification('Book successfully edited!', 2000)
        );
@@ -126,7 +127,7 @@ export class BookListComponent implements OnInit {
         isDanger: true,
       }
     }).afterClosed()
-      .pipe(filter(dialogResult => dialogResult === DialogResponse.Yes))
+      .pipe(filter(dialogResult => dialogResult === this.dialogResponse.Yes))
       .subscribe(() => {
         this.bookService.deleteBook(id)
         this.pushNotification('Book successfully deleted!', 2000);
