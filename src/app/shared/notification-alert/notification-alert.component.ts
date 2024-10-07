@@ -5,8 +5,8 @@ import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
   selector: 'app-notification-alert',
   standalone: true,
   imports: [],
-  template: '{{data}}'
+  template: '{{data}}',
 })
 export class NotificationAlertComponent {
-  constructor(@Inject(MAT_SNACK_BAR_DATA) public data: string) { }
+  constructor(@Inject(MAT_SNACK_BAR_DATA) public data: string) {}
 }

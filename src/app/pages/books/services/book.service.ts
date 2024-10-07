@@ -3,15 +3,34 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Book } from '../model/book.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BookService {
   private books: Book[] = [
-    { id: 1432, title: 'Book 1', author: 'Author 1', year: 2001, description: 'DescriptionDescriptionDescriptionDescriptionDescription DescriptionDescriptionDescriptionDescriptionDescription   DescriptionDescription 1' },
+    {
+      id: 1432,
+      title: 'Book 1',
+      author: 'Author 1',
+      year: 2001,
+      description:
+        'DescriptionDescriptionDescriptionDescriptionDescription DescriptionDescriptionDescriptionDescriptionDescription   DescriptionDescription 1',
+    },
     { id: 1452, title: 'Book 2', author: 'Author 2', year: 2004, description: 'Description' },
-    { id: 1522, title: 'Book 3', author: 'Author 3', year: 2024, description: 'DescDescriptionDescription Descriptionription' },
+    {
+      id: 1522,
+      title: 'Book 3',
+      author: 'Author 3',
+      year: 2024,
+      description: 'DescDescriptionDescription Descriptionription',
+    },
     { id: 5222, title: 'Book 4', author: 'Author 4', year: 2022, description: 'Description' },
-    { id: 3214, title: 'Book 5', author: 'Author 5', year: 2053, description: 'DescriptionDescription DescriptionDescription Description' },
+    {
+      id: 3214,
+      title: 'Book 5',
+      author: 'Author 5',
+      year: 2053,
+      description: 'DescriptionDescription DescriptionDescription Description',
+    },
     { id: 5326, title: 'Book 6', author: 'Author 7', year: 20021, description: 'Description' },
     { id: 2352, title: 'Book 7', author: 'Author 4', year: 2008, description: 'Description' },
     { id: 1632, title: 'Book 8', author: 'Author 9', year: 2010, description: 'Description' },
@@ -48,7 +67,7 @@ export class BookService {
   public updateBook(updatedBook: Book): void {
     const currentBooks = this.booksSubject.value;
     const updatedBooks = currentBooks.map((book) =>
-      book.id === updatedBook.id ? updatedBook : book
+      book.id === updatedBook.id ? updatedBook : book,
     );
     this.booksSubject.next(updatedBooks);
     this.saveToLocalStorage(updatedBooks);

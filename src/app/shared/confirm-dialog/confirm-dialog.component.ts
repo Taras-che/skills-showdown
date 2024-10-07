@@ -8,7 +8,7 @@ import { ConfirmDialog } from './confirm-dialog.model';
   standalone: true,
   imports: [MatButtonModule],
   templateUrl: './confirm-dialog.component.html',
-  styleUrl: './confirm-dialog.component.scss'
+  styleUrl: './confirm-dialog.component.scss',
 })
 export class ConfirmDialogComponent {
   public title: string;
@@ -31,10 +31,10 @@ export class ConfirmDialogComponent {
   }
 
   yesDialog() {
-    this.dialogRef.close('yes-option' );
+    this.dialogRef.close('yes-option');
   }
 
   noDialog() {
-    this.dialogRef.close( 'no-option' );
+    this.dialogRef.close('no-option');
   }
 }

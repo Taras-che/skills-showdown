@@ -1,7 +1,7 @@
 export interface PhoneListItem {
-  id: number,
-  name: string,
-  brand: string,
-  price: number,
-  shopToBuy: string,
+  id: number;
+  name: string;
+  brand: string;
+  price: number;
+  shopToBuy: string;
 }

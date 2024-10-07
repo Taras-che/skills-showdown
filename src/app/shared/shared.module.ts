@@ -17,9 +17,9 @@ import { LoaderComponent } from './loader/loader.component';
     ReactiveFormsModule,
     NzInputModule,
     NzSpinModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   declarations: [FilterTableComponent, LoaderComponent],
   exports: [FilterTableComponent, LoaderComponent],
 })
-export class SharedModule { }
+export class SharedModule {}

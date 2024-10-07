@@ -7,6 +7,6 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   imports: [PhonesListRoutingModule, SharedModule, CommonModule],
   declarations: [PhonesListComponent],
-  exports: [PhonesListComponent]
+  exports: [PhonesListComponent],
 })
-export class PhonesListModule { }
+export class PhonesListModule {}

@@ -10,13 +10,12 @@ import { PhonesListService } from './phones-list.service';
   templateUrl: './phones-list.component.html',
 })
 export class PhonesListComponent implements OnInit, OnDestroy {
-  public phonesList: PhoneListItem[]= [];
+  public phonesList: PhoneListItem[] = [];
   public phoneTableColumns: FilterTableColumn<PhoneListItem>[] = phoneTableColumns;
   private unsubscribe$: Subject<void> = new Subject<void>();
 
-  constructor(private readonly phoneListService: PhonesListService) {
-  }
-   ngOnInit() {
+  constructor(private readonly phoneListService: PhonesListService) {}
+  ngOnInit() {
     this.initData();
   }
 
@@ -26,9 +25,12 @@ export class PhonesListComponent implements OnInit, OnDestroy {
   }
 
   private initData(): void {
-    this.phoneListService.getPhoneList().pipe(takeUntil(this.unsubscribe$)).subscribe({
-      next: (phoneList: PhoneListItem[]) => this.phonesList = phoneList,
-      error: (error) => console.error('Error fetching engin parts:', error)
-    });
+    this.phoneListService
+      .getPhoneList()
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe({
+        next: (phoneList: PhoneListItem[]) => (this.phonesList = phoneList),
+        error: (error) => console.error('Error fetching engin parts:', error),
+      });
   }
 }

@@ -8,7 +8,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 @NgModule({
-  imports: [UserListRoutingModule, CommonModule, SharedModule, NzInputModule, FormsModule, ReactiveFormsModule, NzFormModule, NzInputNumberModule],
-  declarations: [UserListComponent]
+  imports: [
+    UserListRoutingModule,
+    CommonModule,
+    SharedModule,
+    NzInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NzFormModule,
+    NzInputNumberModule,
+  ],
+  declarations: [UserListComponent],
 })
-export class UserListModule { }
+export class UserListModule {}

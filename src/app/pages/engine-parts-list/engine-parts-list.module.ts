@@ -7,7 +7,6 @@ import { SharedModule } from '../../shared/shared.module';
 @NgModule({
   imports: [EnginePartsListRoutingModule, SharedModule],
   declarations: [EnginePartsListComponent],
-  exports: [EnginePartsListComponent]
+  exports: [EnginePartsListComponent],
 })
-
-export class EnginePartsListModule { }
+export class EnginePartsListModule {}

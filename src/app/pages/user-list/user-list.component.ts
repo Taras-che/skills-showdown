@@ -6,7 +6,8 @@ import {
   filter,
   Subject,
   switchMap,
-  takeUntil, tap,
+  takeUntil,
+  tap,
 } from 'rxjs';
 import { User, userListTableColumns } from './user-list.model';
 import { FilterTableColumn } from '../../shared/filter-table/filter-table.model';
@@ -15,7 +16,7 @@ import { FormControl } from '@angular/forms';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.scss']
+  styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit, OnDestroy {
   public userListTableColumns: FilterTableColumn<Partial<User>>[] = userListTableColumns;
@@ -25,22 +26,22 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   private unsubscribe$: Subject<void> = new Subject<void>();
 
-  constructor(private readonly userListService: UserListService,) {
-  }
+  constructor(private readonly userListService: UserListService) {}
 
   ngOnInit() {
     this.search.valueChanges
       .pipe(
         debounceTime(1250),
         distinctUntilChanged(),
-        filter(searchText=> searchText.length > 3),
-        tap(() => this.isDataLoading = true),
-        switchMap(searchText => this.userListService.getData(searchText)),
+        filter((searchText) => searchText.length > 3),
+        tap(() => (this.isDataLoading = true)),
+        switchMap((searchText) => this.userListService.getData(searchText)),
         takeUntil(this.unsubscribe$),
-      ).subscribe((listOfUsers: Partial<User>[]) => {
-      this.usersList = listOfUsers;
-      this.isDataLoading = false;
-    });
+      )
+      .subscribe((listOfUsers: Partial<User>[]) => {
+        this.usersList = listOfUsers;
+        this.isDataLoading = false;
+      });
   }
 
   ngOnDestroy(): void {

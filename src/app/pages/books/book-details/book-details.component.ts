@@ -9,12 +9,12 @@ import { Book } from '../model/book.model';
   standalone: true,
   imports: [CommonModule, MatButtonModule],
   templateUrl: './book-details.component.html',
-  styleUrls: ['./book-details.component.scss']
+  styleUrls: ['./book-details.component.scss'],
 })
 export class BookDetailsComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public book: Book,
-    private dialogRef: MatDialogRef<BookDetailsComponent>
+    private dialogRef: MatDialogRef<BookDetailsComponent>,
   ) {}
 
   public closeModal(): void {

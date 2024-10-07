@@ -27,12 +27,8 @@ import { SharedModule } from '../../shared/shared.module';
     ScrollingModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
-    SharedModule
+    SharedModule,
   ],
-  declarations: [
-    NewsComponent,
-    FilterHighlightPipe,
-    NewsDetailComponent
-  ]
+  declarations: [NewsComponent, FilterHighlightPipe, NewsDetailComponent],
 })
-export class NewsModule { }
+export class NewsModule {}

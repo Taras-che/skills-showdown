@@ -4,10 +4,9 @@ import { Observable, of, delay } from 'rxjs';
 import { generatePhoneList } from './_mock-data';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PhonesListService {
-
   getPhoneList(): Observable<PhoneListItem[]> {
     const mockData: PhoneListItem[] = generatePhoneList();
 

@@ -10,15 +10,14 @@ import { FilterTableColumn } from '../../shared/filter-table/filter-table.model'
   templateUrl: './engine-parts-list.component.html',
 })
 export class EnginePartsListComponent implements OnInit, OnDestroy {
-  public enginPartsList: EnginPartListItem[] = []
+  public enginPartsList: EnginPartListItem[] = [];
   public enginTableColumns: FilterTableColumn<EnginPartListItem>[] = enginTableColumns;
   private unsubscribe$: Subject<void> = new Subject<void>();
 
-  constructor(private readonly enginService: EnginePartsListService) {
-  }
+  constructor(private readonly enginService: EnginePartsListService) {}
 
   ngOnInit(): void {
-     this.initData()
+    this.initData();
   }
 
   ngOnDestroy(): void {
@@ -27,9 +26,12 @@ export class EnginePartsListComponent implements OnInit, OnDestroy {
   }
 
   private initData(): void {
-    this.enginService.getEnginPartsList().pipe(takeUntil(this.unsubscribe$)).subscribe({
-      next: (enginPartList: EnginPartListItem[]) => this.enginPartsList = enginPartList,
-      error: (error: Error) => console.error('Error fetching engin parts:', error)
-    })
+    this.enginService
+      .getEnginPartsList()
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe({
+        next: (enginPartList: EnginPartListItem[]) => (this.enginPartsList = enginPartList),
+        error: (error: Error) => console.error('Error fetching engin parts:', error),
+      });
   }
 }

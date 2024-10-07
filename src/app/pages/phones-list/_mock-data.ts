@@ -11,7 +11,7 @@ export function generatePhoneList(): PhoneListItem[] {
       id: i,
       name: `Model ${i}`,
       price: getRandomInt(10, 200),
-      brand: brandsList[getRandomInt(0, brandsList.length -1)],
+      brand: brandsList[getRandomInt(0, brandsList.length - 1)],
       shopToBuy: shops[getRandomInt(0, shops.length - 1)],
     };
     phoneList.push(phone);
@@ -66,12 +66,12 @@ export const phoneTableColumns: FilterTableColumn<PhoneListItem>[] = [
     filterFn: (brand: string, data: PhoneListItem) => data.brand.indexOf(brand) !== -1,
     filterMultiple: false,
     listOfFilter: [
-      { text:'Nokia', value: 'Nokia' },
-      { text:'Sony', value: 'Sony' },
-      { text:'Motorola', value: 'Motorola' },
+      { text: 'Nokia', value: 'Nokia' },
+      { text: 'Sony', value: 'Sony' },
+      { text: 'Motorola', value: 'Motorola' },
     ],
     sortDirections: [null],
     sortFn: null,
     searchable: getRandomBoolean(),
-  }
+  },
 ];

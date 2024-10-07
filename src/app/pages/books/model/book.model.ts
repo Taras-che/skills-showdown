@@ -17,5 +17,5 @@ export interface Book {
 }
 export enum BookMode {
   edit = 'edit',
-  add = 'add'
+  add = 'add',
 }

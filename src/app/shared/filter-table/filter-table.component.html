@@ -1,43 +1,52 @@
-<nz-table #nzTable [nzData]="listOfDisplayData"
-          [nzLoading]="isDataLoading"
-          nzTableLayout="fixed">
+<nz-table #nzTable [nzData]="listOfDisplayData" [nzLoading]="isDataLoading" nzTableLayout="fixed">
   <thead>
-  <tr>
-    <ng-container *ngFor="let column of tableColumns">
-      <th *ngIf="column.searchable && !column.defaultFilter"
+    <tr>
+      <ng-container *ngFor="let column of tableColumns">
+        <th
+          *ngIf="column.searchable && !column.defaultFilter"
           [nzCustomFilter]="column.searchable"
           [nzSortFn]="column.sortFn"
           [nzSortDirections]="column.sortDirections"
-          [nzFilterMultiple]="column.filterMultiple">
-        {{ column.title }}
-        <form [formGroup]="searchForm" nz-form class="customFilterForm">
-          <nz-form-item>
-            <nz-form-control>
-              <input nz-input formControlName="searchValue" placeholder="Search" (input)="onSearch(column.property)">
-            </nz-form-control>
-          </nz-form-item>
-        </form>
-      </th>
-      <th *ngIf="column.defaultFilter" [nzFilters]="column.listOfFilter"
+          [nzFilterMultiple]="column.filterMultiple"
+        >
+          {{ column.title }}
+          <form [formGroup]="searchForm" nz-form class="customFilterForm">
+            <nz-form-item>
+              <nz-form-control>
+                <input
+                  nz-input
+                  formControlName="searchValue"
+                  placeholder="Search"
+                  (input)="onSearch(column.property)"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </form>
+        </th>
+        <th
+          *ngIf="column.defaultFilter"
+          [nzFilters]="column.listOfFilter"
           [nzFilterFn]="column.filterFn"
           [nzSortFn]="column.sortFn"
           [nzSortDirections]="column.sortDirections"
-          [nzFilterMultiple]="column.filterMultiple">
-        {{ column.title }}
-      </th>
-      <th *ngIf="!column.defaultFilter && !column.searchable"
+          [nzFilterMultiple]="column.filterMultiple"
+        >
+          {{ column.title }}
+        </th>
+        <th
+          *ngIf="!column.defaultFilter && !column.searchable"
           [nzSortFn]="column.sortFn"
           [nzSortDirections]="column.sortDirections"
-          [nzFilterMultiple]="column.filterMultiple">
-        {{ column.title }}
-      </th>
-    </ng-container>
-
-  </tr>
+          [nzFilterMultiple]="column.filterMultiple"
+        >
+          {{ column.title }}
+        </th>
+      </ng-container>
+    </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let row of nzTable.data">
-    <td *ngFor="let column of tableColumns">{{ row[column.property] }}</td>
-  </tr>
+    <tr *ngFor="let row of nzTable.data">
+      <td *ngFor="let column of tableColumns">{{ row[column.property] }}</td>
+    </tr>
   </tbody>
 </nz-table>

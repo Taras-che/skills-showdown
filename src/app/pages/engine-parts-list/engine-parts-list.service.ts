@@ -4,11 +4,10 @@ import { EnginPartListItem } from './engine-parts-list.model';
 import { generateEnginPartList } from './_mock-data';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EnginePartsListService {
-
-  constructor() { }
+  constructor() {}
 
   getEnginPartsList(): Observable<EnginPartListItem[]> {
     const mockData: EnginPartListItem[] = generateEnginPartList();

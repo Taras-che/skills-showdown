@@ -14,7 +14,7 @@ export function generateEnginPartList(): EnginPartListItem[] {
       category: categories[getRandomInt(0, categories.length - 1)],
       price: getRandomInt(10, 200),
       shopToBuy: shops[getRandomInt(0, shops.length - 1)],
-      deliveryEstimate: getRandomInt(1, 14) // Delivery estimate in days
+      deliveryEstimate: getRandomInt(1, 14), // Delivery estimate in days
     };
     enginPartList.push(part);
   }
@@ -61,13 +61,14 @@ export const enginTableColumns: FilterTableColumn<EnginPartListItem>[] = [
     title: 'Shop',
     property: 'shopToBuy',
     defaultFilter: true,
-    filterFn: (shopToBuy: string, data: EnginPartListItem) => data.shopToBuy.indexOf(shopToBuy) !== -1,
+    filterFn: (shopToBuy: string, data: EnginPartListItem) =>
+      data.shopToBuy.indexOf(shopToBuy) !== -1,
     filterMultiple: false,
     listOfFilter: [
-      { text: 'AutoParts Inc.', value:'AutoParts Inc' },
-      { text: 'EngineMaster Shop', value:'EngineMaster Shop' },
-      { text: 'FastParts Outlet', value:'FastParts Outlet' },
-      { text: 'Gearhead Supplies', value:'Gearhead Supplies' }
+      { text: 'AutoParts Inc.', value: 'AutoParts Inc' },
+      { text: 'EngineMaster Shop', value: 'EngineMaster Shop' },
+      { text: 'FastParts Outlet', value: 'FastParts Outlet' },
+      { text: 'Gearhead Supplies', value: 'Gearhead Supplies' },
     ],
     sortDirections: [null],
     sortFn: null,
@@ -82,5 +83,5 @@ export const enginTableColumns: FilterTableColumn<EnginPartListItem>[] = [
     sortDirections: ['ascend', 'descend', null],
     sortFn: (a: EnginPartListItem, b: EnginPartListItem) => a.deliveryEstimate - b.deliveryEstimate,
     searchable: false,
-  }
+  },
 ];

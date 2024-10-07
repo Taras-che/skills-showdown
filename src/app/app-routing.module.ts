@@ -3,20 +3,35 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/engine-parts' },
-  { path: 'engine-parts', loadChildren:
-      () => import('./pages/engine-parts-list/engine-parts-list.module').then(m => m.EnginePartsListModule) },
-  { path: 'phones', loadChildren:
-      () => import('./pages/phones-list/phones-list.module').then(m => m.PhonesListModule) },
-  { path: 'git-users', loadChildren:
-      () => import('./pages/user-list/user-list.module').then(m => m.UserListModule) },
-  { path: 'news', loadChildren:
-      () => import('./pages/news/news.module').then(m => m.NewsModule) },
-  { path: 'book-list', loadComponent:
-      () => import('./pages/books/book-list/book-list.component').then(m => m.BookListComponent) },
+  {
+    path: 'engine-parts',
+    loadChildren: () =>
+      import('./pages/engine-parts-list/engine-parts-list.module').then(
+        (m) => m.EnginePartsListModule,
+      ),
+  },
+  {
+    path: 'phones',
+    loadChildren: () =>
+      import('./pages/phones-list/phones-list.module').then((m) => m.PhonesListModule),
+  },
+  {
+    path: 'git-users',
+    loadChildren: () => import('./pages/user-list/user-list.module').then((m) => m.UserListModule),
+  },
+  {
+    path: 'news',
+    loadChildren: () => import('./pages/news/news.module').then((m) => m.NewsModule),
+  },
+  {
+    path: 'book-list',
+    loadComponent: () =>
+      import('./pages/books/book-list/book-list.component').then((m) => m.BookListComponent),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

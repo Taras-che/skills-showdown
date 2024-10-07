@@ -14,9 +14,8 @@ import { DialogResponse } from '../../../shared/confirm-dialog/confirm-dialog.mo
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule],
   templateUrl: './book-form.component.html',
-  styleUrls: ['./book-form.component.scss']
+  styleUrls: ['./book-form.component.scss'],
 })
-
 export class BookFormComponent {
   public form!: FormGroup<BookFormControl>;
   public mode: BookMode.add | BookMode.edit;
@@ -26,17 +25,24 @@ export class BookFormComponent {
     private fb: FormBuilder,
     private readonly bookService: BookService,
     private dialogRef: MatDialogRef<BookFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { mode: BookMode.add | BookMode.edit, book: Book, bookId: number }
+    @Inject(MAT_DIALOG_DATA)
+    public data: { mode: BookMode.add | BookMode.edit; book: Book; bookId: number },
   ) {
     this.mode = data.mode;
     const isEditMode = data.mode === BookMode.edit;
 
     this.form = this.fb.group<BookFormControl>({
       id: this.fb.control<number | null>(isEditMode ? data.book.id : data.bookId),
-      title: this.fb.control<string | null>(isEditMode ? data.book.title : null, Validators.required),
-      author: this.fb.control<string | null>(isEditMode ? data.book.author : null, Validators.required),
+      title: this.fb.control<string | null>(
+        isEditMode ? data.book.title : null,
+        Validators.required,
+      ),
+      author: this.fb.control<string | null>(
+        isEditMode ? data.book.author : null,
+        Validators.required,
+      ),
       year: this.fb.control<number | null>(isEditMode ? data.book.year : null, Validators.required),
-      description: this.fb.control<string | null>(isEditMode ? data.book.description : null)
+      description: this.fb.control<string | null>(isEditMode ? data.book.description : null),
     });
   }
   public saveBook(): void {
@@ -46,7 +52,7 @@ export class BookFormComponent {
       if (this.mode === BookMode.add) {
         this.bookService.addBook(book);
       } else {
-        this.bookService.updateBook(book)
+        this.bookService.updateBook(book);
       }
 
       this.dialogRef.close(DialogResponse.Yes);
