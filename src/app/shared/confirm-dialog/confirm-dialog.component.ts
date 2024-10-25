@@ -2,7 +2,6 @@ import { Component, Inject, Optional } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { ConfirmDialog } from './confirm-dialog.model';
-
 @Component({
   selector: 'app-confirm-dialog',
   standalone: true,
@@ -17,7 +16,6 @@ export class ConfirmDialogComponent {
   public isWarning: boolean | undefined;
   public yesButton: string;
   public noButton: string;
-
   constructor(
     public dialogRef: MatDialogRef<ConfirmDialogComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public confirmData: ConfirmDialog,
@@ -29,11 +27,9 @@ export class ConfirmDialogComponent {
     this.isDanger = this.confirmData.isDanger;
     this.isWarning = this.confirmData.isWarning;
   }
-
   yesDialog() {
     this.dialogRef.close('yes-option');
   }
-
   noDialog() {
     this.dialogRef.close('no-option');
   }

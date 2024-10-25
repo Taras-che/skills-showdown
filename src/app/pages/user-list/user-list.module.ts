@@ -22,4 +22,5 @@ import { CreateHeaderComponent } from '../../shared/dynamic-component/create-hea
   ],
   declarations: [UserListComponent],
 })
-export class UserListModule {}
+export class UserListModule {
+}

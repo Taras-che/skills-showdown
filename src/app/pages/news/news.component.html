@@ -1,14 +1,12 @@
 <app-create-header></app-create-header>
-
 <div class="container">
   <div class="search-container" [formGroup]="searchForm">
     <mat-form-field appearance="outline" class="search-field">
       <mat-label>Filter by keywords</mat-label>
-      <input matInput [formControlName]="'search'" placeholder="Search" />
+      <input matInput [formControlName]="'search'" placeholder="Search"/>
     </mat-form-field>
   </div>
 </div>
-
 <div class="item-container">
   <ng-container *ngIf="displayItems$ | async as displayItems; else loading">
     <div
@@ -16,7 +14,7 @@
       class="news-card"
     >
       <mat-card>
-        <img mat-card-image [src]="article.image_url" alt="{{ article.title }}" />
+        <img mat-card-image [src]="article.image_url" alt="{{ article.title }}"/>
         <mat-card-content>
           <div class="date">
             <mat-icon aria-hidden="false" aria-label="Calendar" fontIcon="calendar_today">
@@ -40,7 +38,6 @@
       </mat-card>
     </div>
   </ng-container>
-
   <ng-template #loading>
     <app-loader></app-loader>
   </ng-template>

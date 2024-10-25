@@ -15,7 +15,8 @@ export class DynamicHeaderComponent implements OnInit {
   public deleteHeader = output<void>();
   private hintMessage: string =
     'This is not! just ngModel. This is dynamically created Component with 2 way signal data binding! Please check shared/dynamic-component';
-  constructor(private readonly snackBar: MatSnackBar) {}
+  constructor(private readonly snackBar: MatSnackBar) {
+  }
   ngOnInit(): void {
     this.snackBar.openFromComponent(NotificationAlertComponent, {
       data: this.hintMessage,

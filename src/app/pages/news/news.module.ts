@@ -14,7 +14,6 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SharedModule } from '../../shared/shared.module';
 import { CreateHeaderComponent } from '../../shared/dynamic-component/create-header/create-header.component';
-
 @NgModule({
   imports: [
     NewsRoutingModule,
@@ -33,4 +32,5 @@ import { CreateHeaderComponent } from '../../shared/dynamic-component/create-hea
   ],
   declarations: [NewsComponent, FilterHighlightPipe, NewsDetailComponent],
 })
-export class NewsModule {}
+export class NewsModule {
+}

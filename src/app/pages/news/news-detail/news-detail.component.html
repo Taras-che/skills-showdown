@@ -1,16 +1,14 @@
 <div class="news-detail-container">
   <div class="detail-container" *ngIf="news$ | async as news">
-    <img mat-card-image [src]="news.image_url" alt="{{ news.title }}" class="image" />
+    <img mat-card-image [src]="news.image_url" alt="{{ news.title }}" class="image"/>
     <mat-card>
       <div class="body-card">
         <mat-card-title>{{ news.title }}</mat-card-title>
-
         <mat-card-content class="mat-card-content">
           <p>{{ news.summary }}</p>
         </mat-card-content>
       </div>
     </mat-card>
-
     <div class="button-container">
       <button mat-button [routerLink]="['/news']">&#8592; Back to News List</button>
     </div>

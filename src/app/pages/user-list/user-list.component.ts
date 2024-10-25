@@ -1,18 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UserListService } from './user-list.service';
-import {
-  debounceTime,
-  distinctUntilChanged,
-  filter,
-  Subject,
-  switchMap,
-  takeUntil,
-  tap,
-} from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, Subject, switchMap, takeUntil, tap, } from 'rxjs';
 import { User, userListTableColumns } from './user-list.model';
 import { FilterTableColumn } from '../../shared/filter-table/filter-table.model';
 import { FormControl } from '@angular/forms';
-
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -23,11 +14,9 @@ export class UserListComponent implements OnInit, OnDestroy {
   public usersList: Partial<User>[] = [];
   public search: FormControl = new FormControl();
   public isDataLoading: boolean = false;
-
   private unsubscribe$: Subject<void> = new Subject<void>();
-
-  constructor(private readonly userListService: UserListService) {}
-
+  constructor(private readonly userListService: UserListService) {
+  }
   ngOnInit() {
     this.search.valueChanges
       .pipe(
@@ -43,7 +32,6 @@ export class UserListComponent implements OnInit, OnDestroy {
         this.isDataLoading = false;
       });
   }
-
   ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();

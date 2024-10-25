@@ -5,7 +5,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-
 @Component({
   selector: 'app-create-header',
   standalone: true,
@@ -14,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './create-header.component.scss',
 })
 export class CreateHeaderComponent {
-  vcr = viewChild('headerContainer', { read: ViewContainerRef });
+  vcr = viewChild('headerContainer', {read: ViewContainerRef});
   componentRef?: ComponentRef<DynamicHeaderComponent>;
   titleText = signal('');
   isComponentCreated: boolean = false;

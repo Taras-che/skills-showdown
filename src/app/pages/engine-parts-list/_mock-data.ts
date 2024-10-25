@@ -1,12 +1,9 @@
 import { EnginPartListItem } from './engine-parts-list.model';
 import { FilterTableColumn } from '../../shared/filter-table/filter-table.model';
-
 const categories = ['Piston', 'Crankshaft', 'Camshaft', 'Valve', 'Gasket'];
 const shops = ['AutoParts Inc.', 'EngineMaster Shop', 'FastParts Outlet', 'Gearhead Supplies'];
-
 export function generateEnginPartList(): EnginPartListItem[] {
   const enginPartList: EnginPartListItem[] = [];
-
   for (let i = 1; i <= 1000; i++) {
     const part = {
       id: i,
@@ -18,14 +15,11 @@ export function generateEnginPartList(): EnginPartListItem[] {
     };
     enginPartList.push(part);
   }
-
   return enginPartList;
 }
-
 function getRandomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
 export const enginTableColumns: FilterTableColumn<EnginPartListItem>[] = [
   {
     title: 'Name',
@@ -65,10 +59,10 @@ export const enginTableColumns: FilterTableColumn<EnginPartListItem>[] = [
       data.shopToBuy.indexOf(shopToBuy) !== -1,
     filterMultiple: false,
     listOfFilter: [
-      { text: 'AutoParts Inc.', value: 'AutoParts Inc' },
-      { text: 'EngineMaster Shop', value: 'EngineMaster Shop' },
-      { text: 'FastParts Outlet', value: 'FastParts Outlet' },
-      { text: 'Gearhead Supplies', value: 'Gearhead Supplies' },
+      {text: 'AutoParts Inc.', value: 'AutoParts Inc'},
+      {text: 'EngineMaster Shop', value: 'EngineMaster Shop'},
+      {text: 'FastParts Outlet', value: 'FastParts Outlet'},
+      {text: 'Gearhead Supplies', value: 'Gearhead Supplies'},
     ],
     sortDirections: [null],
     sortFn: null,

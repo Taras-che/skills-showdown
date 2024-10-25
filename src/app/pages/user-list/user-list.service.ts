@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable, throwError } from 'rxjs';
-import { UserResponse, User } from './user-list.model';
-
+import { User, UserResponse } from './user-list.model';
 @Injectable({
   providedIn: 'root',
 })
 export class UserListService {
   private url = 'https://api.github.com/search/users?q=';
-
-  constructor(public http: HttpClient) {}
-
+  constructor(public http: HttpClient) {
+  }
   //get data and map response for specific prop we need
   getData(userName: string): Observable<Partial<User>[]> {
     return this.http.get<UserResponse>(`${this.url}${userName}`).pipe(

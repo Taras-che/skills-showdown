@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BookService } from '../services/book.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
@@ -17,7 +17,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotificationAlertComponent } from '../../../shared/notification-alert/notification-alert.component';
 import { DialogResponse } from '../../../shared/confirm-dialog/confirm-dialog.model';
 import { CreateHeaderComponent } from '../../../shared/dynamic-component/create-header/create-header.component';
-
 @Component({
   selector: 'app-book-list',
   standalone: true,
@@ -42,22 +41,18 @@ export class BookListComponent implements OnInit, AfterViewInit {
   public books: Book[] = [];
   public dataSource: MatTableDataSource<Book> = new MatTableDataSource<Book>([]);
   public displayedColumns: string[] = ['title', 'author', 'year', 'action'];
-
   constructor(
     private readonly bookService: BookService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
-  ) {}
-
+  ) {
+  }
   @ViewChild(MatPaginator) paginator: MatPaginator;
-
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-
   ngOnInit(): void {
     this.getDataFromService();
-
     this.searchSubject
       .pipe(debounceTime(1250), distinctUntilChanged(), takeUntil(this.unsubscribe$))
       .subscribe((searchText) => {
@@ -68,26 +63,22 @@ export class BookListComponent implements OnInit, AfterViewInit {
         );
       });
   }
-
   private getDataFromService(): void {
     this.bookService.books$.pipe(takeUntil(this.unsubscribe$)).subscribe((books) => {
       this.books = books;
       this.dataSource.data = books;
     });
   }
-
   private pushNotification(message: string, duration: number): void {
     this.snackBar.openFromComponent(NotificationAlertComponent, {
       data: message,
       duration,
     });
   }
-
   public onSearch(event: Event): void {
     const input = event.target as HTMLInputElement;
     this.searchSubject.next(input.value);
   }
-
   public openDetails(book: Book): void {
     this.dialog.open(BookDetailsComponent, {
       data: book,
@@ -95,34 +86,30 @@ export class BookListComponent implements OnInit, AfterViewInit {
       minWidth: 600,
     });
   }
-
   public addBook(): void {
     this.dialog
       .open(BookFormComponent, {
-        data: { mode: BookMode.add, bookId: this.books.length + 1 },
+        data: {mode: BookMode.add, bookId: this.books.length + 1},
         maxWidth: 900,
         // no needs to unsubscribe because when dialog close angular destroy all subs
       })
       .afterClosed()
       .subscribe((dialogResult: string) => {
         if (dialogResult === undefined || dialogResult === this.dialogResponse.No) return;
-
         this.pushNotification('Book successfully added!', 2000);
         this.getDataFromService();
       });
   }
-
   public editBook(book: Book): void {
     this.dialog
       .open(BookFormComponent, {
-        data: { mode: BookMode.edit, book },
+        data: {mode: BookMode.edit, book},
         maxWidth: 900,
       })
       .afterClosed()
       .pipe(filter((dialogResult) => dialogResult === this.dialogResponse.Yes))
       .subscribe(() => this.pushNotification('Book successfully edited!', 2000));
   }
-
   public deleteBook(id: number, bookTitle: string): void {
     this.dialog
       .open(ConfirmDialogComponent, {

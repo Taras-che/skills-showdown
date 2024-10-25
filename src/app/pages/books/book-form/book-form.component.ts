@@ -6,9 +6,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { BookFormControl, Book, BookMode } from '../model/book.model';
+import { Book, BookFormControl, BookMode } from '../model/book.model';
 import { DialogResponse } from '../../../shared/confirm-dialog/confirm-dialog.model';
-
 @Component({
   selector: 'app-book-form',
   standalone: true,
@@ -20,7 +19,6 @@ export class BookFormComponent {
   public form!: FormGroup<BookFormControl>;
   public mode: BookMode.add | BookMode.edit;
   public BookMode = BookMode;
-
   constructor(
     private fb: FormBuilder,
     private readonly bookService: BookService,
@@ -30,7 +28,6 @@ export class BookFormComponent {
   ) {
     this.mode = data.mode;
     const isEditMode = data.mode === BookMode.edit;
-
     this.form = this.fb.group<BookFormControl>({
       id: this.fb.control<number | null>(isEditMode ? data.book.id : data.bookId),
       title: this.fb.control<string | null>(
@@ -48,17 +45,14 @@ export class BookFormComponent {
   public saveBook(): void {
     if (this.form.valid) {
       const book: Book = this.form.value as Book;
-
       if (this.mode === BookMode.add) {
         this.bookService.addBook(book);
       } else {
         this.bookService.updateBook(book);
       }
-
       this.dialogRef.close(DialogResponse.Yes);
     }
   }
-
   public closeModal(): void {
     this.dialogRef.close(DialogResponse.No);
   }

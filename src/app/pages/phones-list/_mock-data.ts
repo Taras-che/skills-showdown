@@ -1,10 +1,8 @@
 import { PhoneListItem } from './phones-list.model';
 import { FilterTableColumn } from '../../shared/filter-table/filter-table.model';
-
 const shops = ['Rozetka', 'TTT', 'Comfy', 'Foxtrot'];
 const brandsList = ['Nokia', 'Sony', 'Motorola'];
 const phoneList: PhoneListItem[] = [];
-
 export function generatePhoneList(): PhoneListItem[] {
   for (let i = 1; i <= 1000; i++) {
     const phone = {
@@ -16,18 +14,14 @@ export function generatePhoneList(): PhoneListItem[] {
     };
     phoneList.push(phone);
   }
-
   return phoneList;
 }
-
 function getRandomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
 function getRandomBoolean() {
   return Math.random() < 0.5;
 }
-
 export const phoneTableColumns: FilterTableColumn<PhoneListItem>[] = [
   {
     title: 'Name',
@@ -66,9 +60,9 @@ export const phoneTableColumns: FilterTableColumn<PhoneListItem>[] = [
     filterFn: (brand: string, data: PhoneListItem) => data.brand.indexOf(brand) !== -1,
     filterMultiple: false,
     listOfFilter: [
-      { text: 'Nokia', value: 'Nokia' },
-      { text: 'Sony', value: 'Sony' },
-      { text: 'Motorola', value: 'Motorola' },
+      {text: 'Nokia', value: 'Nokia'},
+      {text: 'Sony', value: 'Sony'},
+      {text: 'Motorola', value: 'Motorola'},
     ],
     sortDirections: [null],
     sortFn: null,

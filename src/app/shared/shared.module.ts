@@ -8,7 +8,6 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoaderComponent } from './loader/loader.component';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -22,4 +21,5 @@ import { LoaderComponent } from './loader/loader.component';
   declarations: [FilterTableComponent, LoaderComponent],
   exports: [FilterTableComponent, LoaderComponent],
 })
-export class SharedModule {}
+export class SharedModule {
+}

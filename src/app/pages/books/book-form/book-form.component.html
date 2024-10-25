@@ -1,18 +1,17 @@
 <div mat-dialog-content class="dialog-content">
   <h1 mat-dialog-title>{{ mode === BookMode.add ? 'Add New Book' : 'Edit Book' }}</h1>
-
   <form [formGroup]="form">
     <mat-form-field class="form-field" appearance="fill">
       <mat-label>Title</mat-label>
-      <input matInput formControlName="title" required />
+      <input matInput formControlName="title" required/>
     </mat-form-field>
     <mat-form-field class="form-field" appearance="fill">
       <mat-label>Author</mat-label>
-      <input matInput formControlName="author" required />
+      <input matInput formControlName="author" required/>
     </mat-form-field>
     <mat-form-field class="form-field" appearance="fill">
       <mat-label>Year</mat-label>
-      <input matInput formControlName="year" required type="number" />
+      <input matInput formControlName="year" required type="number"/>
     </mat-form-field>
     <mat-form-field class="form-field" appearance="fill">
       <mat-label>Description</mat-label>

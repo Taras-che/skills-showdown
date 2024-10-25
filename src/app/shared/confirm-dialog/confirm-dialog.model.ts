@@ -6,7 +6,6 @@ export type ConfirmDialog = {
   yesButton: string;
   noButton: string;
 };
-
 export enum DialogResponse {
   Yes = 'yes-option',
   No = 'no-option',

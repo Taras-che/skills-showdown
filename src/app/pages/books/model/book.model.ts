@@ -1,5 +1,4 @@
 import { FormControl } from '@angular/forms';
-
 export interface BookFormControl {
   id: FormControl<number | null>;
   title: FormControl<string | null>;
@@ -7,7 +6,6 @@ export interface BookFormControl {
   year: FormControl<number | null>;
   description: FormControl<string | null>;
 }
-
 export interface Book {
   id: number;
   title: string;

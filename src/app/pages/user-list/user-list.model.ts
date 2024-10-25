@@ -20,13 +20,11 @@ export interface User {
   type: string;
   url: string;
 }
-
 export interface UserResponse {
   incomplete_results: boolean;
   items: User[];
   total_count: number;
 }
-
 export const userListTableColumns: FilterTableColumn<Partial<User>>[] = [
   {
     title: 'Name',

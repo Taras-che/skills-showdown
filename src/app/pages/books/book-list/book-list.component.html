@@ -1,16 +1,14 @@
 <app-create-header></app-create-header>
-
 <mat-toolbar class="toolbar">
   <span class="spacer"></span>
   <mat-form-field class="form-field" appearance="outline">
     <mat-label>Search</mat-label>
-    <input matInput (input)="onSearch($event)" placeholder="Search by title or author" />
+    <input matInput (input)="onSearch($event)" placeholder="Search by title or author"/>
   </mat-form-field>
   <button mat-icon-button (click)="addBook()">
     <mat-icon>add</mat-icon>
   </button>
 </mat-toolbar>
-
 <div class="list-container">
   <table mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="title">
