@@ -16,6 +16,7 @@ import { ConfirmDialogComponent } from '../../../shared/confirm-dialog/confirm-d
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotificationAlertComponent } from '../../../shared/notification-alert/notification-alert.component';
 import { DialogResponse } from '../../../shared/confirm-dialog/confirm-dialog.model';
+import { CreateHeaderComponent } from '../../../shared/dynamic-component/create-header/create-header.component';
 
 @Component({
   selector: 'app-book-list',
@@ -29,6 +30,7 @@ import { DialogResponse } from '../../../shared/confirm-dialog/confirm-dialog.mo
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
+    CreateHeaderComponent,
   ],
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.scss'],

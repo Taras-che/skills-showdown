@@ -26,7 +26,14 @@ const routes: Routes = [
   {
     path: 'book-list',
     loadComponent: () =>
-      import('./pages/books/book-list/book-list.component').then((m) => m.BookListComponent),
+      import('./pages/books/book-list/book-list.component').then((c) => c.BookListComponent),
+  },
+  {
+    path: 'component-creation',
+    loadComponent: () =>
+      import('./pages/components-creation/components-creation.component').then(
+        (c) => c.ComponentsCreationComponent,
+      ),
   },
 ];
 

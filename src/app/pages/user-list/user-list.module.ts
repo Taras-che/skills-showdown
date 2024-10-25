@@ -7,6 +7,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { CreateHeaderComponent } from '../../shared/dynamic-component/create-header/create-header.component';
 @NgModule({
   imports: [
     UserListRoutingModule,
@@ -17,6 +18,7 @@ import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
     ReactiveFormsModule,
     NzFormModule,
     NzInputNumberModule,
+    CreateHeaderComponent,
   ],
   declarations: [UserListComponent],
 })

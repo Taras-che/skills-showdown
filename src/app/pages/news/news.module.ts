@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SharedModule } from '../../shared/shared.module';
+import { CreateHeaderComponent } from '../../shared/dynamic-component/create-header/create-header.component';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { SharedModule } from '../../shared/shared.module';
     ReactiveFormsModule,
     MatProgressSpinnerModule,
     SharedModule,
+    CreateHeaderComponent,
   ],
   declarations: [NewsComponent, FilterHighlightPipe, NewsDetailComponent],
 })

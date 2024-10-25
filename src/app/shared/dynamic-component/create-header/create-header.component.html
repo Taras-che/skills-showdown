@@ -1,0 +1,13 @@
+<ng-container>
+  @if (!isComponentCreated) {
+    <div class="container ant-flex input-container">
+      <mat-form-field>
+        <input matInput [(ngModel)]="titleText" placeholder="Enter header title" />
+      </mat-form-field>
+    </div>
+    <button mat-raised-button (click)="createForm()" [disabled]="titleText().length < 3">
+      Create header
+    </button>
+  }
+</ng-container>
+<ng-container #headerContainer></ng-container>
